@@ -8,7 +8,10 @@ const titleDiv = document.getElementById(`titleDiv`);
 let titleOpacity = 0;
 let computerScore = 0;
 let playerScore = 0;
+let computerGameScore = 0;
+let playerGameScore = 0;
 let roundWinner = '';
+let computerChoice = 0;
 
 let fadeIn = setTimeout(() => {
     let fadeIn2 = setInterval(() => {
@@ -41,24 +44,30 @@ function getComputerChoice() {
     }
 }
 
-function playRound(playerChoice, computerChoice) {
-    //computerChoice = getComputerChoice();
+function playRound(playerChoice) {
+    computerChoice = getComputerChoice();
     playerChoice = playerChoice.toUpperCase();
     if (playerChoice === computerChoice) {
         roundWinner = 'tie'
-        console.log(roundWinner);
-        return playRound(playerChoice, getComputerChoice());
     } else if ((playerChoice === 'ROCK' && computerChoice === 'SCISSORS')
                 || playerChoice === 'PAPER' && computerChoice === 'ROCK'
                 || playerChoice === 'SCISSORS' && computerChoice === 'PAPER') {
         playerScore++;
-        return `You win! ${playerChoice} beats ${computerChoice}!`;
     } else {
         computerScore++;
-        return `You lose! ${computerChoice} beats ${playerChoice}!`
+    }
+
+    if (playerScore === 5) {
+        playerWin();
+    } else if (computerScore === 5) {
+        computerWin();
     }
 }
 
-let playerSelection = '';
-const computerSelection = getComputerChoice();
-//console.log(playRound(playerSelection, getComputerChoice()));
+function playerWin() {
+
+}
+
+function computerWin() {
+    
+}
