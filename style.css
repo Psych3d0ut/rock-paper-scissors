@@ -1,0 +1,27 @@
+body {
+    background-image: url('https://cdn.pixabay.com/photo/2023/03/15/20/46/background-7855412_1280.jpg');
+    background-size: cover;
+    font-family: 'Helvetica', 'Montserrat', 'Rethink Sans', 'Robot', sans-serif;
+}
+#container {
+    margin: 0;
+    padding: 0;
+}
+
+#titleDiv {
+    color: #b1c9c9;
+    text-align: center;
+    margin-top: 2%;
+    border: 5px solid #b1c9c9;
+    padding: 2% 0;
+    background: rgba(31, 36, 36, .0);
+
+}
+
+#titleDiv h1 {
+    display: none;
+    padding: 2% 5%;
+    font-size: 48px;
+    font-style: oblique;
+    opacity: 1;
+}

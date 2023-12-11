@@ -1,8 +1,33 @@
 'use strict';
 
+const ROCK_TITLE = document.getElementById('title1');
+const PAPER_TITLE = document.getElementById('title2');
+const SCISSOR_TITLE = document.getElementById('title3');
+const titleDiv = document.getElementById(`titleDiv`);
+
+let titleOpacity = 0;
 let computerScore = 0;
 let playerScore = 0;
 let roundWinner = '';
+
+let fadeIn2 = setTimeout(() => {
+    let fadeIn = setInterval(() => {
+        if (titleOpacity <= .5)
+            titleDiv.style.background = `rgba(31, 36, 36, ${titleOpacity})`;
+        titleOpacity += 0.01;
+    }, 80);
+}, 2000);
+
+
+timeoutTitle(ROCK_TITLE, 2000);
+timeoutTitle(PAPER_TITLE, 4000);
+timeoutTitle(SCISSOR_TITLE, 6000);
+
+function timeoutTitle(title, delay) {
+    setTimeout(() => {
+        title.style.display=`inline`;
+    }, delay);
+}
 
 function getComputerChoice() {
     let choice =  Math.floor(Math.random() * 3);
@@ -37,12 +62,3 @@ function playRound(playerChoice, computerChoice) {
 let playerSelection = '';
 const computerSelection = getComputerChoice();
 //console.log(playRound(playerSelection, getComputerChoice()));
-
-function game() {
-    while (computerScore <= 5 || playerScore <= 5) {
-        playerSelection = prompt(`Choose Your Fate! (rock, paper, or scissors)`);
-        console.log(playRound(playerSelection, getComputerChoice()));
-    }
-}
-
-game();
