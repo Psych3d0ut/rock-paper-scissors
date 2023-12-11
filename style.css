@@ -4,6 +4,31 @@ body {
     font-family: 'Helvetica', 'Montserrat', 'Rethink Sans', 'Robot', sans-serif;
 }
 
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#overlayWinText {
+    position: absolute;
+    top: 50%;   
+    left: 50%;
+    font-size: 48px;
+    color: white;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
 #container {
     margin: 0;
     padding: 0;
@@ -20,6 +45,7 @@ body {
     box-shadow: inset 0 0 0 0px #202b2b;
     position: relative;
     overflow: hidden;
+    height:25%;
 }
 
 #titleDiv::before, #titleDiv::after {
@@ -98,7 +124,7 @@ body {
 }
 
 #gameContainer {
-    display: flex;
+    display: none;
     flex: 1;
     flex-direction: row;
     margin: 2% 5%;
@@ -149,6 +175,10 @@ body {
     padding-top: 4%;
     align-items: center;
     margin: 0 auto;
+}
+
+.playerImgChoice:hover {
+    cursor: pointer;
 }
 
 .infoText {

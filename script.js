@@ -3,7 +3,14 @@
 const ROCK_TITLE = document.getElementById('title1');
 const PAPER_TITLE = document.getElementById('title2');
 const SCISSOR_TITLE = document.getElementById('title3');
+const overlay = document.getElementById(`overlay`);
+const overlayText = document.getElementById(`overlayWinText`);
+const gameContainer = document.getElementById(`gameContainer`);
 const titleDiv = document.getElementById(`titleDiv`);
+const playerScoreDisplay = document.getElementById(`playerScore`);
+const gameScoreDisplay = document.getElementById(`gameScore`);
+const compScoreDisplay = document.getElementById(`compScore`);
+const winDisplay = document.getElementById(`winDisplay`);
 
 let titleOpacity = 0;
 let computerScore = 0;
@@ -13,10 +20,9 @@ let playerGameScore = 0;
 let roundWinner = '';
 let computerChoice = 0;
 
-let fadeIn = setTimeout(() => {
-    let fadeIn2 = setInterval(() => {
-        if (titleOpacity <= .5)
-            titleDiv.style.background = `rgba(31, 36, 36, ${titleOpacity})`;
+let fadeInTimeout = setTimeout(() => {
+    let fadeIn = setInterval(() => {
+        if (titleOpacity <= .45) titleDiv.style.background = `rgba(31, 36, 36, ${titleOpacity})`;
         titleOpacity += 0.01;
     }, 80);
 }, 2000);
@@ -31,6 +37,10 @@ function timeoutTitle(title, delay) {
         title.style.display=`inline`;
     }, delay);
 }
+
+let bodyTimeout = setTimeout(() => {
+    gameContainer.style.display = `flex`;
+}, 8000);
 
 function getComputerChoice() {
     let choice =  Math.floor(Math.random() * 3);
@@ -48,13 +58,18 @@ function playRound(playerChoice) {
     computerChoice = getComputerChoice();
     playerChoice = playerChoice.toUpperCase();
     if (playerChoice === computerChoice) {
-        roundWinner = 'tie'
+        winDisplay.innerText = `It was a tie!`;
     } else if ((playerChoice === 'ROCK' && computerChoice === 'SCISSORS')
                 || playerChoice === 'PAPER' && computerChoice === 'ROCK'
                 || playerChoice === 'SCISSORS' && computerChoice === 'PAPER') {
         playerScore++;
+        playerScoreDisplay.innerText = playerScore;
+        winDisplay.innerText = `You win! ${playerChoice} beats ${computerChoice}!`;
+
     } else {
         computerScore++;
+        compScoreDisplay.innerText = computerScore;
+        winDisplay.innerText = `You lose! ${computerChoice} beats ${playerChoice}!`;
     }
 
     if (playerScore === 5) {
@@ -64,10 +79,30 @@ function playRound(playerChoice) {
     }
 }
 
-function playerWin() {
+function showOverlay(winner) {
+    overlay.style.display = `block`;
+    if (winner === `player`) 
+        overlayText.textContent = `Congratulation! You won the round! Current Score: ${playerGameScore}-${computerGameScore}`;
+    else 
+        overlayText.textContent = `Sorry, you lost this round. Current Score: ${playerGameScore}-${computerGameScore}`;
+}
 
+function resetGame() {
+    overlay.style.display = `none`;
+    computerScore = 0;
+    playerScore = 0;
+    playerScoreDisplay.innerText = playerScore;
+    compScoreDisplay.innerText = computerScore;
+    winDisplay.innerText = `Score`;
+    gameScoreDisplay.innerText = `${playerGameScore}-${computerGameScore}`;
+}
+
+function playerWin() {
+    playerGameScore++;
+    showOverlay(`player`);
 }
 
 function computerWin() {
-    
+    computerGameScore++;
+    showOverlay(`computer`);
 }

@@ -7,6 +7,9 @@
     </head>
     <body>
         <main>
+            <div id="overlay" onclick="resetGame()">
+                <h1 id="overlayWinText"></h1>
+            </div>
             <div id="container">
                 <div id="titleDiv">
                     <h1 id="title1">Rock.</h1>
@@ -15,16 +18,16 @@
                 </div>
                 <div id="gameContainer">
                     <div id="playerContainer">
-                        <img class="imgChoice" onclick="playRound('ROCK')" src="https://static.vecteezy.com/system/resources/previews/023/575/439/original/a-beautifully-crafted-rock-formation-that-mimics-nature-s-wondrous-beauty-placed-against-a-clear-and-transparent-background-ready-to-be-incorporated-into-any-kind-of-design-generative-ai-png.png" alt="Rock">
-                        <img class="imgChoice" onclick="playRound('PAPER')" src="https://www.textures4photoshop.com/tex/thumbs/seamless-texture-crumpled-paper-free-thumb36.jpg" alt="Paper">
-                        <img class="imgChoice" onclick="playRound('SCISSORS')" src="https://image.similarpng.com/very-thumbnail/2020/12/Red-scissors-illustration-on-transparent-background-PNG.png" alt="Scissors">
+                        <img class="imgChoice playerImgChoice" onclick="playRound('ROCK')" src="https://static.vecteezy.com/system/resources/previews/023/575/439/original/a-beautifully-crafted-rock-formation-that-mimics-nature-s-wondrous-beauty-placed-against-a-clear-and-transparent-background-ready-to-be-incorporated-into-any-kind-of-design-generative-ai-png.png" alt="Rock">
+                        <img class="imgChoice playerImgChoice" onclick="playRound('PAPER')" src="https://www.textures4photoshop.com/tex/thumbs/seamless-texture-crumpled-paper-free-thumb36.jpg" alt="Paper">
+                        <img class="imgChoice playerImgChoice" onclick="playRound('SCISSORS')" src="https://image.similarpng.com/very-thumbnail/2020/12/Red-scissors-illustration-on-transparent-background-PNG.png" alt="Scissors">
                         <h3 class="infoText">Earthling</h2>
                     </div>
                     <div id="scoreboard">
                         <h2 id="playerScore">0</h2>
                         <h1 id="gameScore">0-0</h1>
                         <h2 id="compScore">0</h2>
-                        <h3 class="infoText">Score</h2>
+                        <h3 class="infoText" id="winDisplay">Score</h2>
                     </div>
                     <div id="compContainer">
                         <img class="imgChoice" src="https://static.vecteezy.com/system/resources/previews/023/575/439/original/a-beautifully-crafted-rock-formation-that-mimics-nature-s-wondrous-beauty-placed-against-a-clear-and-transparent-background-ready-to-be-incorporated-into-any-kind-of-design-generative-ai-png.png" alt="Rock">
