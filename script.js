@@ -10,8 +10,8 @@ let computerScore = 0;
 let playerScore = 0;
 let roundWinner = '';
 
-let fadeIn2 = setTimeout(() => {
-    let fadeIn = setInterval(() => {
+let fadeIn = setTimeout(() => {
+    let fadeIn2 = setInterval(() => {
         if (titleOpacity <= .5)
             titleDiv.style.background = `rgba(31, 36, 36, ${titleOpacity})`;
         titleOpacity += 0.01;
